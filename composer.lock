@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c2e9fa83d55e41cef5a0aa16c0078ec5",
+    "content-hash": "ab79cee5c6b09532a7312b87cf0d037b",
     "packages": [
         {
             "name": "berthott/laravel-crudable",
@@ -3620,19 +3620,20 @@
         },
         {
             "name": "robsontenorio/laravel-keycloak-guard",
-            "version": "1.6.0",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/robsontenorio/laravel-keycloak-guard.git",
-                "reference": "347a9693c1292f403fad65bb2b1d879e17838c4e"
+                "reference": "25ca4d207ddce5e7623b48a0325ea1f044f9f901"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/robsontenorio/laravel-keycloak-guard/zipball/347a9693c1292f403fad65bb2b1d879e17838c4e",
-                "reference": "347a9693c1292f403fad65bb2b1d879e17838c4e",
+                "url": "https://api.github.com/repos/robsontenorio/laravel-keycloak-guard/zipball/25ca4d207ddce5e7623b48a0325ea1f044f9f901",
+                "reference": "25ca4d207ddce5e7623b48a0325ea1f044f9f901",
                 "shasum": ""
             },
             "require": {
+                "ext-openssl": "*",
                 "firebase/php-jwt": "^6.3",
                 "php": "^8.0"
             },
@@ -3673,9 +3674,9 @@
             ],
             "support": {
                 "issues": "https://github.com/robsontenorio/laravel-keycloak-guard/issues",
-                "source": "https://github.com/robsontenorio/laravel-keycloak-guard/tree/1.6.0"
+                "source": "https://github.com/robsontenorio/laravel-keycloak-guard/tree/1.6.1"
             },
-            "time": "2024-04-25T11:07:49+00:00"
+            "time": "2024-05-25T19:12:24+00:00"
         },
         {
             "name": "spatie/laravel-package-tools",

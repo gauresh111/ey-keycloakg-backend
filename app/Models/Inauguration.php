@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class College extends Model
+class Inauguration extends Model
 {
     use HasFactory;
-    protected $connection = 'college_master_list';
-    protected $table = 'college_list';
     
+    protected $table = 'readyForInauguration';
+    protected $fillable = ['college_name'];
     public function profiles(){
         return $this->hasMany(Profile::class);
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\College;
+use App\Models\Inauguration;
 use Illuminate\Http\Request;
 
 class CollegeController extends Controller
@@ -26,6 +27,52 @@ class CollegeController extends Controller
 
         return response()->json(['states' => $states]);
     }
+    public function updateElsi($id)
+    {
+        $college = College::on('college_database')
+            ->where('id', $id)
+            ->first();
+        $college->IS_eLSI = 2;
+        $college->save();
+        return response()->json(['college' => $college]);
+    }
+    public function InaugurationStatusAvailable($id,$status)
+    {
+        $college = College::on('college_database')
+            ->where('id', $id)
+            ->first();
+        $college->IS_eLSI = $status;
+        $college->save();
+        return response()->json(['college' => $college]);
+        // ongoing inauguration status is 8 in the database
+    }
+    public function readyForInauguration($collegeName)
+    {
+        try{
+        $inaugSlot = new Inauguration();
+        $inaugSlot->college_name = $collegeName;
+        $inaugSlot->save();
+        }
+        catch (ValidationException $e){
+            return response()->json([
+                'status' => 406,
+                'message' => 'Ingauration Slot Not Registered',
+                'errors' => $e->errors(),
+            ]);
+        }
+        return response()->json([
+            'status' => 200,
+            'message' => 'Ingauration Slot Registered',
+            'data' => $inaugSlot,
+        ]);
+    }
+    public function getAwaitingInaugurationColleges()
+    {
+        $colleges = College::on('college_database')
+            ->where('IS_eLSI', 8)
+            ->get();
+        return response()->json(['colleges' => $colleges]);
+    }
     public function getCollegesByState($country, $state)
     {
         // Specify the database connection for the College model
@@ -42,7 +89,12 @@ class CollegeController extends Controller
         ->orderby("college_name")->get();
         return response()->json(['colleges' => $colleges]);
     }
-
+    public function getNonElsiColleges(){
+        $colleges = College::on('college_database')
+        ->where('IS_eLSI', 2)
+        ->orderby("college_name")->get();
+        return response()->json(['colleges' => $colleges]);
+    }
     //function to update college data on database
     public function putCollegeData(Request $request, $id, $field){
         $college = College::on('college_database')->find($id);
